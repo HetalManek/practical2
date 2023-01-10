@@ -1,0 +1,70 @@
+<form [formGroup]="myselectedvalues">
+  <div style="width: auto">
+    <select
+      (change)="getbudgetitem($event)"
+      id="budgetItemId"
+      name="d1"
+      formControlName="budget"
+      style="width: 15%; display: inline-block; background-color: #d9e6e3"
+    >
+      <option value="" selected>--select--</option>
+      <option [value]="data1.budgetItemName" *ngFor="let data1 of budgetdata">
+        {{ data1.budgetItemName }}
+      </option></select
+    >&nbsp;
+
+    <select
+      (change)="getbudgetitem($event)"
+      id="programID"
+      name="d2"
+      formControlName="program"
+      style="width: 15%; display: inline-block; background-color: #d9e6e3"
+    >
+      <option value="" selected>--select--</option>
+      <option [value]="data2.programName" *ngFor="let data2 of programdata">
+        {{ data2.programName }}
+      </option></select
+    >&nbsp;
+
+    <select
+      (change)="getbudgetitem($event)"
+      id="projectID"
+      name="d3"
+      formControlName="activePeoject"
+      style="width: 15%; display: inline-block; background-color: #d9e6e3"
+    >
+      <option value="" selected>--select--</option>
+      <option
+        [value]="data3.estimatedCost"
+        *ngFor="let data3 of activeprojectdata"
+      >
+        {{ data3.estimatedCost }}
+      </option>
+    </select>
+    <button class="btn" type="submit" (click)="getDropdownData()">Get</button>
+  </div>
+</form>
+
+<table class="styled-table">
+  <thead>
+    <tr>
+      <th scope="col">budgetItemName</th>
+      <th scope="col">programName</th>
+      <th scope="col">estimatedCost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item1 of Selecteddata">
+      <td>{{ item1.budget }}</td>
+    </tr>
+    <tr *ngFor="let item1 of Selecteddata">
+      <td></td>
+      <td>{{ item1.program }}</td>
+      <td>{{ item1.activePeoject | currency : "USD" : "symbol" }}</td>
+    </tr>
+    <!-- <tr>
+        <td>sub Total:</td>
+        <td></td>
+            </tr> -->
+  </tbody>
+</table>
